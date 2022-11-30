@@ -1,6 +1,6 @@
-import streamlit as st
+import  streamlit as st
 from PIL import Image
-from keras.preprocessing.image import load_img,img_to_array
+from tensorflow.keras.utils import load_img,img_to_array
 import numpy as np
 from keras.models import load_model
 import requests
@@ -39,7 +39,11 @@ def processed_img(img_path):
     return res.capitalize()
 
 def run():
-    st.title("Fruits🍍-Vegetable🍅 Classification")
+    st.title("Fruits🍍-Vegetable🍅 Recognition System")
+    
+    img1 = Image.open('upload_images/fruitveg.jpg')
+    img1 = img1.resize((700,350))
+    st.image(img1,use_column_width=False)
     img_file = st.file_uploader("Choose an Image", type=["jpg", "png"])
     if img_file is not None:
         img = Image.open(img_file).resize((250,250))
